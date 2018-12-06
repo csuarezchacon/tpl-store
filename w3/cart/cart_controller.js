@@ -1,8 +1,8 @@
 (function () {
-	angular.module('cart-module').controller('cartController', [ '$http', '$q', 'cartFactory', function($http, $q, cartFactory) {
+	angular.module('index-module').controller('cartController', [ '$http', 'cartFactory', function($http, cartFactory) {
 		var vm = this;
 
-		vm.cart = {};
+		/*vm.cart = {};
 		cartGet();
 		
 		function cartGet() {
@@ -10,17 +10,11 @@
 				vm.cart = rs;
 			});
 		};
-		
-		vm.cartItemAdd = function() {
-			cartFactory.cartItemAdd().then(function(rs) {
-				cartGet();
-			});
-		};
 
 		vm.cartItemRemove = function(index) {
 			cartFactory.cartItemRemove(index).then(function(rs) {
 				cartGet();
 			});
-		}
+		}*/
 	}]);
 })();
