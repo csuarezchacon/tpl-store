@@ -1,5 +1,5 @@
 (function () {
-	angular.module('index-module').factory('cartFactory', [ '$http', '$q', function($http, $q) {
+	angular.module('cart-module').factory('cartFactory', [ '$http', '$q', function($http, $q) {
 		var vm = this;
 		
 		vm.cartGet = function(){

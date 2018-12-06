@@ -1,5 +1,5 @@
 (function () {
-	angular.module('index-module').factory('storeFactory', [ '$http', '$q', function($http, $q) {
+	angular.module('store-module').factory('storeFactory', [ '$http', '$q', function($http, $q) {
 		var vm = this;
 
 		vm.cartItemAdd = function(){ // Agrega Item

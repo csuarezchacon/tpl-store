@@ -1,5 +1,5 @@
 (function () {
-	angular.module('index-module').controller('storeController', [
+	angular.module('store-module').controller('storeController', [
 		'$http', '$q', 'storeFactory', function($http, $q, storeFactory) {
 			var vm = this;
 			vm.saludo = "aasdfh";
