@@ -5,12 +5,11 @@
 		$id = $_POST['id'];
 	}
 
-	$product = (object) array('id'=>$id, 'cant'=>1);
-	array_push($_SESSION['cart']->prod_list, $product);
-
-	/*if(array_key_exists('id',$_SESSION['cart']->prod_list)){
-		if(array_search($id, array_column($_SESSION['cart']->prod_list, 'id'))){
-			print_r(current($_SESSION['cart']->prod_list));
+	echo $id;
+	if(count($_SESSION['cart']->prod_list) > 0){
+		$itemId = array_search($id, array_column($_SESSION['cart']->prod_list, 'id'));
+		if($itemId >= 0){
+			$_SESSION['cart']->prod_list[$itemId]->cant = $_SESSION['cart']->prod_list[$itemId]->cant + 1;
 		} else {
 			$product = (object) array('id'=>$id, 'cant'=>1);
 			array_push($_SESSION['cart']->prod_list, $product);
@@ -18,7 +17,7 @@
 	} else {
 		$product = (object) array('id'=>$id, 'cant'=>1);
 		array_push($_SESSION['cart']->prod_list, $product);
-	}*/
+	}
 	
 	print_r($_SESSION);
 	/*if(isset($_SESSION['cart'])) {
@@ -30,11 +29,3 @@
 		echo(json_encode($product));
 	}*/
 ?>
-
-Array (	[cart] => stdClass Object (
-	 [prod_list] => Array (
-	 	[0] => stdClass Object ( [id] => 1 [cant] => 1 )
-	 	[1] => stdClass Object ( [id] => 1 [cant] => 1 )
-	 )
-))
-2
