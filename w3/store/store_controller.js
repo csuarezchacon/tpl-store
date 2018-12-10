@@ -6,12 +6,12 @@
 			
 			vm.cartItemAdd = function(_id) { // Agrega Item
 				storeFactory.cartItemAdd(_id).then(function(rs) {
-					alert("producto agregado");
+					
 				});
 			};
 			vm.cartUnset = function() { // Elimina Carro
 				storeFactory.cartUnset().then(function(rs) {
-					alert("carro eliminado");
+					
 				});
 			};
 		}

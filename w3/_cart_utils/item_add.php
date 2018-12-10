@@ -4,28 +4,25 @@
 	if(isset($_POST['id'])) {
 		$id = $_POST['id'];
 	}
-
-	echo $id;
-	if(count($_SESSION['cart']->prod_list) > 0){
-		$itemId = array_search($id, array_column($_SESSION['cart']->prod_list, 'id'));
-		if($itemId >= 0){
-			$_SESSION['cart']->prod_list[$itemId]->cant = $_SESSION['cart']->prod_list[$itemId]->cant + 1;
-		} else {
-			$product = (object) array('id'=>$id, 'cant'=>1);
-			array_push($_SESSION['cart']->prod_list, $product);
+	
+	$cant = count($_SESSION['cart']->prod_list);
+	$newRow = TRUE;
+	if ($cant > 0) {
+		for ($index=0; $index < $cant; $index++) { 
+			if ($_SESSION['cart']->prod_list[$index]->id == $id) {
+				$_SESSION['cart']->prod_list[$index]->cant = $_SESSION['cart']->prod_list[$index]->cant + 1;
+				$newRow = FALSE;
+				break;
+			}
 		}
+		if ($newRow) {
+			$product = (object) array('id'=>$id, 'cant'=>1);
+			array_push($_SESSION['cart']->prod_list, $product);		}
 	} else {
 		$product = (object) array('id'=>$id, 'cant'=>1);
 		array_push($_SESSION['cart']->prod_list, $product);
+		$newRow = TRUE;
 	}
 	
 	print_r($_SESSION);
-	/*if(isset($_SESSION['cart'])) {
-		$prodCnt = count($_SESSION['cart']->product);
-		$product = (object) array('id'=>$prodCnt, 'description'=>"nuevo producto {$prodCnt}");
-
-		array_push($_SESSION['cart']->product, $product);
-		
-		echo(json_encode($product));
-	}*/
 ?>
