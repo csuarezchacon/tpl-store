@@ -1,1 +1,5 @@
-Carrito
+CARRITO
+<br>
+<div class="row" ng-repeat="item in vmCart.cart">
+    <div class="col">{{item.id}} {{item.cant}}<i class="fa fa-trash-o" ng-click="vmCart.cartItemRemove(item.id);"></i></div>
+</div>

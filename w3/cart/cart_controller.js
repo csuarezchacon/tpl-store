@@ -2,7 +2,7 @@
 	angular.module('cart-module').controller('cartController', [ '$http', 'cartFactory', function($http, cartFactory) {
 		var vm = this;
 
-		/*vm.cart = {};
+		vm.cart = {};
 		cartGet();
 		
 		function cartGet() {
@@ -11,10 +11,10 @@
 			});
 		};
 
-		vm.cartItemRemove = function(index) {
-			cartFactory.cartItemRemove(index).then(function(rs) {
+		vm.cartItemRemove = function(_id) {
+			cartFactory.cartItemRemove(_id).then(function(rs) {
 				cartGet();
 			});
-		}*/
+		};
 	}]);
 })();

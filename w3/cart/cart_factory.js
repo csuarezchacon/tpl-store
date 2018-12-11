@@ -2,12 +2,12 @@
 	angular.module('cart-module').factory('cartFactory', [ '$http', '$q', function($http, $q) {
 		var vm = this;
 		
-		vm.cartGet = function(){
+		vm.cartGet = function(){ // Obtiene Lista Carrito
 			var rs = $q.defer();
 			$http({
-				url: "_cartGet.php",
-				method: "GET",
-				headers: "{'Content-Type': 'application/x-www-form-urlencoded'}" 
+				url: "w3/_cart_utils/items_get.php",
+				method: 'GET',
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).success(function(data, status, header, config) {
 				rs.resolve(data);
 			}).error(function(data, status, header, config) {
@@ -16,13 +16,13 @@
 			return rs.promise;
 		};
 
-		vm.cartItemRemove = function(in_index){ // Elimina Item
+		vm.cartItemRemove = function(_id){ // Elimina Item
 			var rs = $q.defer();
 			var dataJson = $.param({
-				index: in_index
+				id: _id
 			});
 			$http({
-				url: '_cart_item_remove.php',
+				url: 'w3/_cart_utils/item_remove.php',
 				method: 'POST',
 				data: dataJson,
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
